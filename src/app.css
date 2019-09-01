@@ -1,0 +1,61 @@
+body {
+	font-size: 14px;
+}
+
+.pr{position: relative;}
+
+.width600 {
+	max-width: 600px;
+	margin: 0 auto;
+}
+
+.link { 
+	color: #999;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.link:hover { 
+	color: #666;
+}
+
+.point-box {
+	text-align: center;
+	padding-top: 2%; 
+	border-radius: 6px;
+	width: 100px;
+	height: 100px;
+	background: #f8f8f8;
+}
+
+.point-box .counter {
+	font-size: 40px;
+	font-weight: bold;
+	position: relative;
+	top: 15px;
+}
+
+.point-box span {
+	font-size: 13px;
+}
+
+.remove{
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	display: none;
+	cursor: pointer;
+}
+
+.box {
+	padding: 5px;
+	border: 1px solid #eee;
+	border-radius: 4px;
+}
+.box:hover{
+	background: #eee;
+}
+
+.box:hover .remove{
+	display: block;
+}
