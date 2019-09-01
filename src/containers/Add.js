@@ -10,7 +10,8 @@ class Add extends React.Component {
 			name: '',
 			url: '',
 			id: null,
-			count: 0
+			count: 0,
+			timer: null
 		}
 	}
 	goBack = () => this.props.history.goBack()
@@ -31,7 +32,7 @@ class Add extends React.Component {
 
 	OnChange = (e) => {
 		const { name, value } = e.target
-		this.setState({ [name]: value, id: Date.now() })
+		this.setState({ [name]: value, id: Date.now(), timer: Date.now() })
 	}
 
 	render() {
