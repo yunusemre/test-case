@@ -10,7 +10,7 @@ import { set, get } from '../utils'
 class Home extends React.Component {
 	state = {
 		page: 1,
-		pageSize: 5,
+		pageSize: 4,
 		name: null,
 		id: null,
 		isRemove: false,
@@ -23,7 +23,7 @@ class Home extends React.Component {
 		{ value: 1, label: 'Most Voted' }
 	]
 
-	onChangePage = (pageOfItems, page) => {
+	onChangePage = (pageOfItems, page, pager) => {
 		this.setState({ pageOfItems, page })
 	}
 
@@ -36,12 +36,17 @@ class Home extends React.Component {
 	}
 
 	onRemove = () => {
+		const { page, pageOfItems, name, id } = this.state;
+
 		const oldArray = get('data')
-		const newArr = oldArray.filter(res => res.id != this.state.id)
+		if (pageOfItems.length == 1 && page != 1) {
+			this.setState({ page: page - 1 })
+		}
+		const newArr = oldArray.filter(res => res.id != id)
 		set('data', newArr)
 		const getItem = get('data')
 		this.setState({ data: getItem }, () => {
-			toast.success(`${this.state.name} Silindi`)
+			toast.success(`${name} Silindi`)
 			this.setState({ name: null })
 		})
 	}
@@ -92,6 +97,7 @@ class Home extends React.Component {
 						/>
 					}
 					<ItemList
+						items={data}
 						arr={pageOfItems}
 						onRemove={this.isRemove}
 						plus={this.Counter.bind(this, 1)}

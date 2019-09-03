@@ -29,31 +29,15 @@ class Pagination extends React.Component {
     pager = this.getPager(items.length, page, pageSize)
     const pageOfItems = items.slice(pager.startIndex, pager.endIndex + 1)
     this.setState({ pager: pager })
-    this.props.onChangePage(pageOfItems, page)
+    this.props.onChangePage(pageOfItems, page, pager)
   }
 
   getPager(totalItems, currentPage, pageSize) {
     // default to first page
     currentPage = currentPage || 1
     const totalPages = Math.ceil(totalItems / pageSize)
-    let startPage, endPage;
-
-    if (totalPages <= 10) {
-      startPage = 1
-      endPage = totalPages
-    } else {
-      if (currentPage <= 6) {
-        startPage = 1
-        endPage = 10
-      } else if (currentPage + 4 >= totalPages) {
-        startPage = totalPages - 9
-        endPage = totalPages
-      } else {
-        startPage = currentPage - 5
-        endPage = currentPage + 4
-      }
-    }
-
+    const startPage = 1
+    const endPage = totalPages
     const startIndex = (currentPage - 1) * pageSize
     const endIndex = Math.min(startIndex + pageSize - 1, totalItems - 1)
     const pages = [...Array((endPage + 1) - startPage).keys()].map(i => startPage + i)
