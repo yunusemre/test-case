@@ -98,7 +98,7 @@ Pagination.defaultProps = {
   pageSize: 5
 }
 
-Pagination.prototype = {
+Pagination.propTypes = {
   initialPage: PropTypes.number.isRequired,
   pageSize: PropTypes.number.isRequired,
 }
