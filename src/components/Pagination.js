@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 class Pagination extends React.Component {
   constructor(props) {
@@ -95,6 +96,11 @@ class Pagination extends React.Component {
 Pagination.defaultProps = {
   initialPage: 1,
   pageSize: 5
+}
+
+Pagination.prototype = {
+  initialPage: PropTypes.number.isRequired,
+  pageSize: PropTypes.number.isRequired,
 }
 
 export default Pagination
