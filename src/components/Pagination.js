@@ -29,7 +29,7 @@ class Pagination extends React.Component {
     pager = this.getPager(items.length, page, pageSize)
     const pageOfItems = items.slice(pager.startIndex, pager.endIndex + 1)
     this.setState({ pager: pager })
-    this.props.onChangePage(pageOfItems, page, pager)
+    this.props.onChangePage(pageOfItems, page)
   }
 
   getPager(totalItems, currentPage, pageSize) {
