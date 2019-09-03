@@ -28,9 +28,9 @@ const Item = ({ name, url, up, down, count, remove }) => (
 Item.propTypes = {
   name: PropTypes.string.isRequired,
   url: PropTypes.any.isRequired,
+  count: PropTypes.number.isRequired,
   up: PropTypes.func,
   down: PropTypes.func,
-  count: PropTypes.number.isRequired
 }
 
 Item.defaultProps = {

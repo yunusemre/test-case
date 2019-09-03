@@ -1,11 +1,3 @@
-export const get = (name) => {
-  if (name != undefined) return JSON.parse(localStorage.getItem(name))
-}
-
-export const set = (name, list) => {
-  if (name != undefined) return localStorage.setItem(name, JSON.stringify(list))
-}
-
-export const remove = () => {
-  return localStorage.clear()
-}
+export const get = (name) => JSON.parse(localStorage.getItem(name))
+export const set = (name, list) => localStorage.setItem(name, JSON.stringify(list))
+export const remove = () => localStorage.clear()

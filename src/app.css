@@ -2,7 +2,8 @@ body {
 	font-size: 14px;
 }
 
-.pr{position: relative;}
+.db { display: block; }
+.pr{ position: relative; }
 
 .width600 {
 	max-width: 600px;
@@ -58,4 +59,8 @@ body {
 
 .box:hover .remove{
 	display: block;
+}
+
+.modal.fade {
+	background: rgba(0, 0, 0, 0.3);
 }

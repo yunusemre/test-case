@@ -1,27 +1,23 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import { ToastContainer, toast } from 'react-toastify'
+import { toast } from 'react-toastify'
 import { set, get } from '../utils'
 
 class Add extends React.Component {
-	constructor() {
-		super();
-		this.state = {
-			name: '',
-			url: '',
-			id: null,
-			count: 0,
-			timer: null
-		}
+	state = {
+		id: Date.now(),
+		name: '',
+		url: '',
+		count: 0,
+		timer: Date.now()
 	}
+
 	goBack = () => this.props.history.goBack()
 
 	onSubmit = (e) => {
 		e.preventDefault()
-		e.target.disabled = true
 		this.saveDataToLocalStorage(this.state)
-		toast.success(`${this.state.name} Add`)
-		setTimeout(() => this.props.history.push('/'), 1000)
+		toast.success(`${this.state.name} eklendi`)
+		this.props.history.push('/')
 	}
 
 	saveDataToLocalStorage(data) {
@@ -30,9 +26,9 @@ class Add extends React.Component {
 		set('data', newArray)
 	}
 
-	OnChange = (e) => {
+	onChange = (e) => {
 		const { name, value } = e.target
-		this.setState({ [name]: value, id: Date.now(), timer: Date.now() })
+		this.setState({ [name]: value })
 	}
 
 	render() {
@@ -46,24 +42,23 @@ class Add extends React.Component {
 						<h2>Add new link</h2>
 						<div className="row mb-2">
 							<div className="col">
-								<form>
+								<form onSubmit={this.onSubmit}>
 									<div className="form-group">
 										<label>Name</label>
-										<input type="name" required name="name" onChange={this.OnChange} className="form-control" placeholder="Enter name" />
+										<input type="name" required name="name" onChange={this.onChange} className="form-control" placeholder="Enter name" />
 									</div>
 									<div className="form-group">
 										<label>Url</label>
-										<input type="url" required name="url" onChange={this.OnChange} className="form-control" placeholder="Url name" pattern="^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$" />
+										<input type="url" required name="url" onChange={this.onChange} className="form-control" placeholder="Url name" pattern="^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$" />
 									</div>
 									<div className="float-right">
-										<button type="submit" className="btn btn-primary" onClick={this.onSubmit}>Add</button>
+										<button type="submit" className="btn btn-primary">Add</button>
 									</div>
 								</form>
 							</div>
 						</div>
 					</div>
 				</div>
-				<ToastContainer />
 			</div>
 		)
 	}
