@@ -54,7 +54,7 @@ class Home extends React.Component {
 			if (value == -1) return a.count - b.count
 		})
 		set('data', itemsCopy)
-		this.setState({ data: itemsCopy })
+		this.setState({ data: itemsCopy, page: 1 })
 	}
 
 	Counter = (asc, id) => {
@@ -84,7 +84,7 @@ class Home extends React.Component {
 						</div>
 					</div>
 					{
-						data.length > 0 && 
+						data.length > 0 &&
 						<Select
 							options={this.options}
 							className="mb-2"
