@@ -30,10 +30,11 @@ class Home extends React.Component {
 		this.setState({ message })
 	}
 
-	showToast(message) {
+	showToast(message, type) {
 		this.setState({
 			showToast: true,
-			message
+			message,
+			type
 		}, () => {
 			setTimeout(() =>
 				this.setState({ showToast: false, message: "" })
@@ -54,7 +55,7 @@ class Home extends React.Component {
 	}
 
 	onRemove = () => {
-		const { page, pageOfItems, name, id } = this.state;
+		const { page, pageOfItems, name, id, type } = this.state;
 
 		const oldArray = get('data')
 		if (pageOfItems.length == 1 && page != 1) {
@@ -65,7 +66,7 @@ class Home extends React.Component {
 		const getItem = get('data')
 		this.setState({ data: getItem, showToast: true }, () => {
 			console.log(`${name} Silindi`)
-			this.showToast(`${name} Silindi`);
+			this.showToast(`${name} Silindi`, 'success');
 			// toast.success(`${name} Silindi`)
 			this.setState({ name: null })
 		})
@@ -136,6 +137,7 @@ class Home extends React.Component {
 					/>
 				</div>
 				<Toast
+					type="alert-success"
 					message={this.state.message}
 					visible={this.state.showToast}
 				/>

@@ -3,23 +3,28 @@ import PropTypes from 'prop-types'
 
 class Toast extends React.Component {
   render() {
-    let classes = this.props.visible ? 'visible toaster' : 'toaster'
-    return (
-      <div className={classes}>
-        <p>{this.props.message}</p>
-      </div>
-    )
+    const { visible, type, message } = this.props;
+    let classes = visible ? 'show' : '';
+    return <div id="toaster">
+      {
+        visible && <div className={`toaster ${classes} ${type}`}>{message}</div>
+      }
+    </div>
+
+
   }
 }
 
 Toast.propTypes = {
   visible: PropTypes.bool.isRequired,
-  message: PropTypes.string.isRequired
+  message: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired
 }
 
 Toast.defaulProps = {
   visible: false,
-  message: ""
+  message: "",
+  type: "alert-success"
 }
 
 

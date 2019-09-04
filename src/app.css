@@ -69,14 +69,15 @@ body {
 	position: absolute;
 	top: 20px;
 	right: 20px;
-	background: #ddd;
+	border: 1px solid #ddd;
 	color: #000;
 	border-radius: 4px;
 	padding: 10px;
-	min-width: 100px;
+	min-width: 120px;
+	text-align: center;
 	font-size: 18px;
 	display: none;
 	z-index: 100;
 }
 
-.toaster.visible { display: block;}
+.toaster.show { display: block;}
