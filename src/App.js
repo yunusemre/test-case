@@ -1,7 +1,7 @@
 import './app.css';
 import React from 'react';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify'
+import ToastContainer from './components/ToastContainer'
 import Layout from './components/Layout';
 import Home from './containers/Home';
 import Add from './containers/Add';
@@ -16,7 +16,10 @@ const App = () => (
 				<Route path="/add" component={Add} />
 				<Route path="*" component={NotFound} />
 			</Switch>
-			<ToastContainer />
+			<ToastContainer
+				className="toaster"
+				content="yunus emre"
+			/>
 		</Layout>
 	</BrowserRouter>
 );

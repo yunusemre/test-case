@@ -1,11 +1,12 @@
 import React from 'react'
-import { toast } from 'react-toastify'
+// import { toast } from 'react-toastify'
 import ItemList from '../components/ItemList'
 import Select from 'react-select'
 import { Link } from 'react-router-dom'
 import Remove from '../components/Remove'
 import Pagination from '../components/Pagination'
 import { set, get } from '../utils'
+import Toast from '../components/ToastContainer';
 
 class Home extends React.Component {
 	state = {
@@ -15,13 +16,30 @@ class Home extends React.Component {
 		id: null,
 		isRemove: false,
 		pageOfItems: [],
-		data: get('data') || []
+		data: get('data') || [],
+		showToast: true,
+		message: "emre"
 	};
 
 	options = [
 		{ value: -1, label: 'Less Voted' },
 		{ value: 1, label: 'Most Voted' }
 	]
+
+	onMessageChange(message) {
+		this.setState({ message })
+	}
+
+	showToast(message) {
+		this.setState({
+			showToast: true,
+			message
+		}, () => {
+			setTimeout(() =>
+				this.setState({ showToast: false })
+				, 3000)
+		})
+	}
 
 	onChangePage = (pageOfItems, page, pager) => {
 		this.setState({ pageOfItems, page })
@@ -45,8 +63,9 @@ class Home extends React.Component {
 		const newArr = oldArray.filter(res => res.id != id)
 		set('data', newArr)
 		const getItem = get('data')
-		this.setState({ data: getItem }, () => {
-			toast.success(`${name} Silindi`)
+		this.setState({ data: getItem, showToast: true }, () => {
+			this.showToast.bind(this, "Silindi");
+			// toast.success(`${name} Silindi`)
 			this.setState({ name: null })
 		})
 	}
@@ -115,6 +134,10 @@ class Home extends React.Component {
 						cancel={this.onCancel}
 					/>
 				</div>
+				<Toast
+					message="Emre"
+					visible={true}
+				/>
 			</div>
 		);
 	}

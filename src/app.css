@@ -64,3 +64,15 @@ body {
 .modal.fade {
 	background: rgba(0, 0, 0, 0.3);
 }
+
+.toast {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	background: red;
+	display: none;
+}
+
+.toast.visible {
+	display: block;
+}

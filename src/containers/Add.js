@@ -8,7 +8,10 @@ class Add extends React.Component {
 		name: '',
 		url: '',
 		count: 0,
-		timer: Date.now()
+		timer: Date.now(),
+		showToast: false,
+		level: 'success',
+		message: null
 	}
 
 	goBack = () => this.props.history.goBack()
