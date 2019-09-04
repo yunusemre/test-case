@@ -17,8 +17,8 @@ class Home extends React.Component {
 		isRemove: false,
 		pageOfItems: [],
 		data: get('data') || [],
-		showToast: true,
-		message: "emre"
+		showToast: false,
+		message: ""
 	};
 
 	options = [
@@ -36,7 +36,7 @@ class Home extends React.Component {
 			message
 		}, () => {
 			setTimeout(() =>
-				this.setState({ showToast: false })
+				this.setState({ showToast: false, message: "" })
 				, 3000)
 		})
 	}
@@ -64,7 +64,8 @@ class Home extends React.Component {
 		set('data', newArr)
 		const getItem = get('data')
 		this.setState({ data: getItem, showToast: true }, () => {
-			this.showToast.bind(this, "Silindi");
+			console.log(`${name} Silindi`)
+			this.showToast(`${name} Silindi`);
 			// toast.success(`${name} Silindi`)
 			this.setState({ name: null })
 		})
@@ -135,8 +136,8 @@ class Home extends React.Component {
 					/>
 				</div>
 				<Toast
-					message="Emre"
-					visible={true}
+					message={this.state.message}
+					visible={this.state.showToast}
 				/>
 			</div>
 		);

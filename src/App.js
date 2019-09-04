@@ -16,10 +16,6 @@ const App = () => (
 				<Route path="/add" component={Add} />
 				<Route path="*" component={NotFound} />
 			</Switch>
-			<ToastContainer
-				className="toaster"
-				content="yunus emre"
-			/>
 		</Layout>
 	</BrowserRouter>
 );

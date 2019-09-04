@@ -65,14 +65,18 @@ body {
 	background: rgba(0, 0, 0, 0.3);
 }
 
-.toast {
+.toaster {
 	position: absolute;
 	top: 20px;
 	right: 20px;
-	background: red;
+	background: #ddd;
+	color: #000;
+	border-radius: 4px;
+	padding: 10px;
+	min-width: 100px;
+	font-size: 18px;
 	display: none;
+	z-index: 100;
 }
 
-.toast.visible {
-	display: block;
-}
+.toaster.visible { display: block;}
