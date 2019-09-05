@@ -33,8 +33,7 @@ class Home extends React.Component {
 	showToast(message, type) {
 		this.setState({
 			showToast: true,
-			message,
-			type
+			message
 		}, () => {
 			setTimeout(() =>
 				this.setState({ showToast: false, message: "" })
@@ -66,7 +65,7 @@ class Home extends React.Component {
 		const getItem = get('data')
 		this.setState({ data: getItem, showToast: true }, () => {
 			console.log(`${name} Silindi`)
-			this.showToast(`${name} Silindi`, 'success');
+			this.showToast(`${name} Silindi`);
 			// toast.success(`${name} Silindi`)
 			this.setState({ name: null })
 		})
