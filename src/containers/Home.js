@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom'
 import Remove from '../components/Remove'
 import Pagination from '../components/Pagination'
 import { set, get } from '../utils'
-import Toast from '../components/ToastContainer';
 
 class Home extends React.Component {
 	state = {
