@@ -1,5 +1,5 @@
 import React from 'react'
-// import { toast } from 'react-toastify'
+import { toast } from 'react-toastify'
 import ItemList from '../components/ItemList'
 import Select from 'react-select'
 import { Link } from 'react-router-dom'
@@ -64,9 +64,7 @@ class Home extends React.Component {
 		set('data', newArr)
 		const getItem = get('data')
 		this.setState({ data: getItem, showToast: true }, () => {
-			console.log(`${name} Silindi`)
-			this.showToast(`${name} Silindi`);
-			// toast.success(`${name} Silindi`)
+			toast.success(`${name} Silindi`)
 			this.setState({ name: null })
 		})
 	}
@@ -135,11 +133,6 @@ class Home extends React.Component {
 						cancel={this.onCancel}
 					/>
 				</div>
-				<Toast
-					type="alert-success"
-					message={this.state.message}
-					visible={this.state.showToast}
-				/>
 			</div>
 		);
 	}
