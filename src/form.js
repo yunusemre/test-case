@@ -113,3 +113,61 @@ const mapDispatchToProps = {
 export default connect(null, mapDispatchToProps)(reduxForm({
   form: 'MyfieldArrays',
 })(FieldArraysForm));
+
+
+
+/* eslint-disable */
+
+import React, { Component } from 'react';
+import { Modal, Button, ModalBody } from 'reactstrap';
+import Form from './form';
+
+function flattenObject(ob) {
+  const toReturn = {};
+
+  for (const i in ob) {
+    if (!ob.hasOwnProperty(i)) continue;
+
+    if ((typeof ob[i]) === 'object' && ob[i] !== null) {
+      const flatObject = flattenObject(ob[i]);
+      for (const x in flatObject) {
+        if (!flatObject.hasOwnProperty(x)) continue;
+
+        toReturn[`${i}.${x}`] = flatObject[x];
+      }
+    } else {
+      toReturn[i] = ob[i];
+    }
+  }
+  return toReturn;
+}
+
+export default class Test extends Component {
+  handleSubmit = (e) => {
+    const flatObject = flattenObject(e.permissions);
+    let newArray = []
+    Object.entries(flatObject).map(res => {
+      const [name, value] = res;
+      const obj = {};
+      obj.name = name;
+      obj.isGranted = value;
+      newArray.push(obj);
+    })
+    console.log(newArray)
+  };
+
+  render() {
+    return (
+      <div>
+        <div>
+          <Button>aç</Button>
+        </div>
+        <Modal size="lg" isOpen>
+          <ModalBody>
+            <Form onSubmit={this.handleSubmit} />
+          </ModalBody>
+        </Modal>
+      </div>
+    );
+  }
+}
